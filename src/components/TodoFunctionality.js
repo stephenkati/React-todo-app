@@ -1,26 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import TodoList from './Todolist';
 import InputItem from './InputItem';
 
 const Functionality = () => {
-  const [todoItem, setTodoItem] = useState([
-    {
-      id: 1,
-      title: 'Setup development environment',
-      completed: true,
-    },
-    {
-      id: 2,
-      title: 'Develop website and add content',
-      completed: false,
-    },
-    {
-      id: 3,
-      title: 'Deploy to live server',
-      completed: false,
-    },
-  ]);
+  const getInitialItems = () => {
+    const temp = localStorage.getItem('todoItem');
+    const savedItems = JSON.parse(temp);
+    return savedItems || [];
+  };
+  const [todoItem, setTodoItem] = useState(getInitialItems());
+  useEffect(() => {
+    const temp = JSON.stringify(todoItem);
+    localStorage.setItem('todoItem', temp);
+  }, [todoItem]);
   const handleChange = (id) => {
     setTodoItem((currentState) => currentState.map((item) => {
       if (item.id === id) {
@@ -43,13 +36,25 @@ const Functionality = () => {
     };
     setTodoItem([...todoItem, newItem]);
   };
+  const updateItem = (newTitle, id) => setTodoItem(
+    todoItem.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          title: newTitle,
+        };
+      }
+      return item;
+    }),
+  );
   return (
-    <div>
+    <div className="todoContainer">
       <InputItem addItem={addItem} />
       <TodoList
         todoItemProps={todoItem}
         handleChange={handleChange}
         deleteItem={deleteItem}
+        updateItem={updateItem}
       />
     </div>
   );
