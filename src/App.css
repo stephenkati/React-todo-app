@@ -12,7 +12,7 @@
   background-color: #eee;
   box-shadow: 3px 2px 3px black;
   padding: 1em;
-  gap: .5em;
+  gap: 0.5em;
   width: 30%;
   min-width: 300px;
 }
@@ -23,7 +23,7 @@ input[type="text"] {
   border-radius: 15px;
   border: none;
   box-shadow: 2px 2px 2px black;
-  padding: 0 .5em;
+  padding: 0 0.5em;
 }
 
 ul {
@@ -32,13 +32,13 @@ ul {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: .3em;
+  gap: 0.3em;
 }
 
 .todoItem {
   display: flex;
   padding: 5px;
-  gap: .5em;
+  gap: 0.5em;
   justify-content: space-between;
 }
 
@@ -46,7 +46,7 @@ ul {
   border: none;
   font-size: 18px;
   display: flex;
-  gap: .5em;
+  gap: 0.5em;
 }
 
 .edit {
