@@ -1,7 +1,12 @@
 import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
 
-const TodoList = ({ todoItemProps, handleChange, deleteItem }) => (
+const TodoList = ({
+  todoItemProps,
+  handleChange,
+  deleteItem,
+  updateItem,
+}) => (
   <ul>
     {
         todoItemProps.map((item) => (
@@ -10,6 +15,7 @@ const TodoList = ({ todoItemProps, handleChange, deleteItem }) => (
             itemProp={item}
             handleChange={handleChange}
             deleteItem={deleteItem}
+            updateItem={updateItem}
           />
         ))
       }
@@ -20,6 +26,7 @@ TodoList.propTypes = {
   todoItemProps: PropTypes.objectOf.isRequired,
   handleChange: PropTypes.func.isRequired,
   deleteItem: PropTypes.func.isRequired,
+  updateItem: PropTypes.func.isRequired,
 };
 
 export default TodoList;
