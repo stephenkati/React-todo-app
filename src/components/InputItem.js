@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { FaPlusCircle } from 'react-icons/fa';
 
 const InputItem = ({ addItem }) => {
   const [title, setTitle] = useState('');
@@ -25,7 +26,9 @@ const InputItem = ({ addItem }) => {
         value={title}
         onChange={handleChange}
       />
-      <button type="submit">Submit</button>
+      <button type="submit">
+        <FaPlusCircle />
+      </button>
       <span>{error}</span>
     </form>
   );
